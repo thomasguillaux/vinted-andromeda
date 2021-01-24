@@ -96,7 +96,6 @@ router.get("/offers", async (req, res) => {
       sort.replace("price-", "");
     }
 
-    const count = await Offer.countDocuments(filters);
 
     const offers = await Offer.find(filters)
     .select("product_name product_price")
@@ -104,10 +103,7 @@ router.get("/offers", async (req, res) => {
     .skip(skip)
     .sort(sort)
 
-    res.status(200).json({
-      count: count,
-      offers: offers,
-    })
+    res.status(200).json(offers)
 
     } catch (error) {
         res.status(404).json({ error: error.message});
