@@ -99,7 +99,7 @@ router.get("/offers", async (req, res) => {
     const count = await Offer.countDocuments(filters);
 
     const offers = await Offer.find(filters)
-    .select("product_name product_price")
+    // .select("product_name product_price")
     .limit(limit)
     .skip(skip)
     .sort(sort)
