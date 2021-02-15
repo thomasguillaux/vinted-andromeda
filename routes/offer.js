@@ -20,19 +20,19 @@ router.post("/offer/publish", isAuthenticated, async (req, res) => {
             product_price: price,
             product_details: [
               {
-                Brand: brand,
+                BRAND: brand,
               },
               {
-                Size: size,
+                SIZE: size,
               },
               {
-                Condition: condition,
+                CONDITION: condition,
               },
               {
-                Color: color,
+                COLOR: color,
               },
               {
-                City: city,
+                CITY: city,
               },
             ],
             owner: req.user,
