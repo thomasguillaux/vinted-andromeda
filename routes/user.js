@@ -69,9 +69,11 @@ router.post("/user/login", async (req, res) => {
     
     try {
 
-        if (user) {
+        const userToLog = await User.findOne({ email: req.fields.email });
+
+        if (userToLog) {
             
-            const userToLog = await User.findOne({ email: req.fields.email });
+            // const userToLog = await User.findOne({ email: req.fields.email });
             const userPassword = req.fields.password;
             const salt = userToLog.salt;
             const hash = SHA256(userPassword + salt).toString(encBase64);
