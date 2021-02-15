@@ -47,7 +47,7 @@ router.post("/offer/publish", isAuthenticated, async (req, res) => {
         newOffer.product_image = pictureToUpload;
 
         // Save the offer 
-        await newOffer.save();
+        await newOffer.populate("owner").save();
 
         // Respond to customer
         res.status(200).json(newOffer);
