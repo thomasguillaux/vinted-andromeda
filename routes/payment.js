@@ -11,7 +11,7 @@ const User = require("../models/User");
 const Offer = require("../models/Offer");
 const Payment = require("../models/Payment");
 
-router.post("/payment", isAuthenticated, async (req, res) => {
+router.post("/payment", async (req, res) => {
 
     try {
 
@@ -25,15 +25,15 @@ router.post("/payment", isAuthenticated, async (req, res) => {
 
         if (response.status === "succeeded") {
 
-            const newPayment = new Payment({
-                // amount: req.fields.amount,
-                // currency: req.fields.currency,
-                // description: req.fields.description,
-                source: req.fields.stripeToken,
-                // owner: req.user
-            });
+            // const newPayment = new Payment({
+            //     // amount: req.fields.amount,
+            //     // currency: req.fields.currency,
+            //     // description: req.fields.description,
+            //     source: req.fields.stripeToken,
+            //     // owner: req.user
+            // });
 
-            await newPayment.populate("owner").save();
+            // await newPayment.populate("owner").save();
 
             res.status(200).json({ message: "Paiement validé" })
         }
