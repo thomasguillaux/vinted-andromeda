@@ -42,3 +42,5 @@ router.post("/payment", async (req, res) => {
         res.status(404).json({ error: error.message})
     }
 })
+
+module.exports = payment;
