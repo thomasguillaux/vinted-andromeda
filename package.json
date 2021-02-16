@@ -19,5 +19,8 @@
     "express-formidable": "^1.2.0",
     "mongoose": "^5.11.12",
     "uid2": "0.0.3"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
   }
 }

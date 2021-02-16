@@ -1,4 +1,5 @@
 const User = require("../models/User")
+const Payment = require("../models/Payment");
 
 const isAuthenticated = async(req, res, next) => {
 

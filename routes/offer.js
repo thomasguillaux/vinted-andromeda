@@ -5,6 +5,7 @@ const isAuthenticated = require("../middleware/isAuthenticated");
 
 const User = require("../models/User");
 const Offer = require("../models/Offer");
+const Payment = require("../models/Payment");
 
 router.post("/offer/publish", isAuthenticated, async (req, res) => {
 

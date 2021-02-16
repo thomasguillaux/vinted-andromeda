@@ -6,6 +6,8 @@ const uid2 = require("uid2");
 const cloudinary = require("cloudinary").v2;
 
 const User = require("../models/User");
+const Offer = require("../models/Offer");
+const Payment = require("../models/Payment");
 
 router.post("/user/signup", async (req, res) => {
 
