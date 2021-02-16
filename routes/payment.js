@@ -2,7 +2,8 @@ const express = require("express");
 const formidable = require("express-formidable");
 const router = express.Router();
 const cors = require("cors");
-const stripe = require("stripe")("sk_test_wYLoCp005rVakaPGnKWoSc1f")
+require('dotenv').config();
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 const app = express();
 app.use(formidable());
