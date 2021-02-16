@@ -15,8 +15,10 @@ app.use(cors());
 
 const userRoutes = require("./routes/user");
 const offerRoutes = require("./routes/offer")
+const paymentRoutes = require("./routes/payment")
 app.use(userRoutes);
 app.use(offerRoutes);
+app.use(paymentRoutes);
 
 // Connection to DB
 

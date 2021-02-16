@@ -1,5 +1,6 @@
 const express = require("express");
 const formidable = require("express-formidable");
+const router = express.Router();
 const cors = require("cors");
 const stripe = require("stripe")("sk_test_wYLoCp005rVakaPGnKWoSc1f")
 
@@ -10,17 +11,20 @@ app.use(cors());
 const User = require("../models/User");
 const Offer = require("../models/Offer");
 const Payment = require("../models/Payment");
+const isAuthenticated = require("../middleware/isAuthenticated");
 
-router.post("/payment", async (req, res) => {
+router.post("/payment/:id", async (req, res) => {
 
     try {
 
+        const offer = await Offer.findById(req.params.id).populate("owner");
+
+        console.log(offer)
+
         const response = await stripe.charges.create({
-            // amount: req.fields.amount,
-            // currency: req.fields.currency,
-            // description: req.fields.description,
+            amount: Number(offer.product_price) * 100,
+            currency: "eur",
             source: req.fields.stripeToken,
-            // owner: req.user
         });
 
         if (response.status === "succeeded") {
@@ -43,4 +47,4 @@ router.post("/payment", async (req, res) => {
     }
 })
 
-module.exports = payment;
+module.exports = router;
